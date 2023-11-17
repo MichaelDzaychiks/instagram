@@ -1,0 +1,304 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #ecf0f3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    form {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        text-align: center;
+    }
+
+    form legend {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #e74c3c;
+    }
+
+    form div {
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    form label {
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        transform: translateY(-50%);
+        font-size: 16px;
+        color: #3498db;
+    }
+
+    form input {
+        width: calc(100% - 30px);
+        padding: 15px;
+        padding-left: 30px;
+        border: 2px solid #3498db;
+        border-radius: 25px;
+        outline: none;
+        font-size: 16px;
+    }
+
+    form .error {
+        position: absolute;
+        bottom: -20px;
+        color: #e74c3c;
+    }
+
+    form button {
+        background-color: #3498db;
+        color: #fff;
+        padding: 15px;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 18px;
+        transition: background-color 0.3s ease;
+    }
+
+    form button:hover {
+        background-color: #217dbb;
+    }
+
+    form small a {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        color: #555;
+        margin-top: 15px;
+        font-size: 14px;
+    }
+
+    form small a:hover {
+        text-decoration: underline;
+        color: #333;
+    }
+
+    .table-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    .center-table {
+        width: 100%;
+        max-width: 600px;
+        border-collapse: collapse;
+    }
+
+    .center-table td {
+        padding: 20px;
+        border: 1px solid #ddd;
+    }
+
+
+</style>
+<!-- <div class="">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="">
+            <legend class="">Daftar</legend>
+
+            <div class="">
+                {{ form.username.label(class="") }}
+
+                {% if form.username.errors%}
+                    {{ form.username(class="") }}
+                    <div class="">
+                        {% for error in form.username.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.username(class="form-control ") }}
+                {% endif %}
+
+            </div>
+
+            <div class="">
+                {{ form.fullname.label(class="") }}
+
+                {% if form.fullname.errors%}
+                    {{ form.fullname(class="") }}
+                    <div class="">
+                        {% for error in form.fullname.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.fullname(class="form-control ") }}
+                {% endif %}
+
+            </div>
+
+            <div class="">
+                {{ form.email.label(class="") }}
+
+                {% if form.email.errors%}
+                    {{ form.email(class="") }}
+                    <div class="">
+                        {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email(class="form-control ") }}
+                {% endif %}
+
+            </div>
+
+            <div class="">
+                {{ form.password.label(class="") }}
+
+                {% if form.password.errors%}
+                    {{ form.password(class="") }}
+                    <div class="">
+                        {% for error in form.password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.password(class="form-control ") }}
+                {% endif %}
+
+            </div>
+
+            <div class="">
+                {{ form.confirm_password.label(class="") }}
+
+                {% if form.confirm_password.errors%}
+                    {{ form.confirm_password(class="") }}
+                    <div class="">
+                        {% for error in form.password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.confirm_password(class="form-control ") }}
+                {% endif %}
+
+            </div>
+        </fieldset>
+        <div class="">
+            {{ form.submit(class="btn btn-outline-info") }}
+            <small class="">
+                <a href="{{ url_for('login') }}">Sudah punya akun?</a>
+            </small>
+        </div>
+        
+
+    </form>
+</div> -->
+
+<div class="table-container">
+    <table class="center-table">
+        <tr>
+            <td>
+                <form method="POST" action="">
+                    {{ form.hidden_tag() }}
+                    <fieldset>
+                        <legend>Daftar</legend>
+    
+                        <div class="field">
+                            {{ form.username.label(class="") }}
+                            {% if form.username.errors %}
+                                {{ form.username(class="") }}
+                                <div class="error">
+                                    {% for error in form.username.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.username(class="form-control") }}
+                            {% endif %}
+                        </div>
+    
+                        <div class="field">
+                            {{ form.fullname.label(class="") }}
+                            {% if form.fullname.errors %}
+                                {{ form.fullname(class="") }}
+                                <div class="error">
+                                    {% for error in form.fullname.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.fullname(class="form-control") }}
+                            {% endif %}
+                        </div>
+    
+                        <div class="field">
+                            {{ form.email.label(class="") }}
+                            {% if form.email.errors %}
+                                {{ form.email(class="") }}
+                                <div class="error">
+                                    {% for error in form.email.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.email(class="form-control") }}
+                            {% endif %}
+                        </div>
+    
+                        <div class="field">
+                            {{ form.password.label(class="") }}
+                            {% if form.password.errors %}
+                                {{ form.password(class="") }}
+                                <div class="error">
+                                    {% for error in form.password.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.password(class="form-control") }}
+                            {% endif %}
+                        </div>
+    
+                        <div class="field">
+                            {{ form.confirm_password.label(class="") }}
+                            {% if form.confirm_password.errors %}
+                                {{ form.confirm_password(class="") }}
+                                <div class="error">
+                                    {% for error in form.password.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.confirm_password(class="form-control") }}
+                            {% endif %}
+                        </div>
+                    </fieldset>
+                    <div class="field">
+                        {{ form.submit(class="btn btn-outline-info") }}
+                        <small>
+                            <a href="{{ url_for('login') }}">Sudah punya akun?</a>
+                        </small>
+                    </div>
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+{% endblock content %}
